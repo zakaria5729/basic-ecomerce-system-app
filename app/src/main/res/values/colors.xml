@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#131e5c</color>
+    <color name="colorPrimaryDark">#1b2459</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorYellow">#f8eae24d</color>
+    <color name="colorMeroon">#812343</color>
+    <color name="colorDark">#41484D</color>
+    <color name="colorWhiter">#d4d6d9</color>
+    <color name="colorOther">#999b9e</color>
+    <color name="colorCallButton">#0aa655</color>
+    <color name="colorExpand">#499441</color>
+    <color name="colorNotExpand">#fcfcfc</color>
+    <color name="colorEditTextFloating">#585858</color>
+</resources>

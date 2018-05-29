@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:text="Post an ad"/>
+
+    <TextView
+        android:id="@+id/postSubHeaderId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:text="Please, log in to post your ad"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/emailLoginET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email Address"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/passwordLoginET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Password"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/passwordShowCheckBox"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Show password"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/loginBtnId"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:textAllCaps="false"
+        android:background="@drawable/custom_sign_up_button_design"
+        android:backgroundTint="@color/colorCallButton"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:text="Login"
+        android:onClick="loginBtn"/>
+
+    <TextView
+        android:id="@+id/errorMsgId"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:visibility="gone"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/forgotPassId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"
+        android:textColor="@color/colorCallButton"
+        android:layout_gravity="center_horizontal"
+        android:text="Forgot your password?"
+        android:onClick="forgotPasswordTv"/>
+
+    <TextView
+        android:id="@+id/dontHaveAnAccountId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:text="Don't have an account?" />
+
+    <TextView
+        android:id="@+id/signUpTvId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textSize="16sp"
+        android:textColor="@color/colorCallButton"
+        android:layout_gravity="center_horizontal"
+        android:text="Sign up Now"
+        android:onClick="signUpTv"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="or"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/continueWithPhoneId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/colorCallButton"
+        android:layout_gravity="center_horizontal"
+        android:text="Continue with phone"
+        android:onClick="continueWithPhone"/>
+
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="45dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:text="Post an ad"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:text="Please, sign up to post your ad"/>
+
+    <Button
+        android:id="@+id/phoneVerifyPopUpId"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:textAllCaps="false"
+        android:background="@drawable/custom_sign_up_button_design"
+        android:backgroundTint="@color/colorCallButton"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:text="Continue with phone number"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="or"
+        android:textSize="18sp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/signUpPopUpId"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/colorExpand"
+        android:background="@drawable/custom_sign_up_button_design"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:text="Sign up with email account"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:text="Already Have an account?"/>
+
+    <TextView
+        android:id="@+id/loginPopUpId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="17sp"
+        android:textColor="@color/colorCallButton"
+        android:layout_gravity="center_horizontal"
+        android:text="Login"/>
+
+    <TextView
+        android:id="@+id/closePopUpId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="25dp"
+        android:textSize="17sp"
+        android:layout_gravity="center_horizontal"
+        android:text="Close"/>
+
+</LinearLayout>

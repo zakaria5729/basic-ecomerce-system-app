@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res/android">
+    <item
+        app:id="@+id/accountIcon"
+        app:icon="@drawable/ic_account_circle_black_24dp"
+        app:title="Profile"
+        android:showAsAction="always" >
+    <menu>
+        <item
+            app:id="@+id/accountIconWithEmailOrPhone"
+            app:title=""
+            android:showAsAction="never" />
+        <item
+            app:id="@+id/myAccount"
+            app:title="My Account"
+            android:showAsAction="never" />
+        <item
+            app:id="@+id/logout"
+            app:title="Log Out"
+            android:showAsAction="never" />
+    </menu>
+    </item>
+
+    <item
+        app:id="@+id/settings"
+        app:title="Settings"
+        android:showAsAction="never">
+        <menu>
+            <item
+                app:id="@+id/updateProfile"
+                app:title="Update Profile"
+                app:icon="@drawable/ic_account_box_black_24dp"
+                android:showAsAction="never" />
+            <item
+                app:id="@+id/changePassword"
+                app:title="Change Password"
+                app:icon="@drawable/ic_password_24dp"
+                android:showAsAction="never" />
+            <item
+                app:id="@+id/nothing"
+                app:title=""
+                android:showAsAction="never" />
+        </menu>
+    </item>
+
+    <item
+        app:id="@+id/others"
+        android:showAsAction="never"
+        app:title="Others">
+        <menu>
+            <item
+                app:id="@+id/send"
+                app:title="Send Message"
+                app:icon="@drawable/ic_send_black_24dp"
+                android:showAsAction="never" />
+            <item
+                app:id="@+id/shareApp"
+                app:title="Share App"
+                app:icon="@drawable/ic_share_black_24dp"
+                android:showAsAction="never" />
+            <item
+                app:id="@+id/faq"
+                app:title="FAQ"
+                app:icon="@drawable/ic_faq_24dp"
+                android:showAsAction="never" />
+            <item
+                app:id="@+id/about"
+                app:title="About"
+                app:icon="@drawable/ic_info_black_24dp"
+                android:showAsAction="never" />
+        </menu>
+    </item>
+
+</menu>

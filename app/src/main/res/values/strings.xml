@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Kena-Becha.Com</string>
+
+    <string-array name="Electronics_Item">
+        <item>Mobile</item>
+        <item>Mobile Accosories</item>
+        <item>Mobile Accosories</item>
+        <item>Mobile Accosories</item>
+    </string-array>
+
+    <string name="faq_name"><u>Frequently Asked Questions</u></string>
+
+    <string-array name="faq_header">
+        <item>1. How do I post an product?</item>
+        <item>2. How do I delete my product?</item>
+        <item>3. How do I edit my product?</item>
+        <item>4. How do I set a new password on Kena-kata.com?</item>
+        <item>5. How do I sign up for a user account on Kena-kata.com?</item>
+        <item>6. How do I log in and log out of my account?	</item>
+        <item>7. How do I change my account details?</item>
+        <item>8. Why can not I log in to my account?</item>
+    </string-array>
+
+    <string-array name="faq_child">
+        <item>Posting an ad on Kena-kata.com is quick and easy! Simply click the yellow Post Ad button and follow the instructions.\nIf you are not already logged in, you will need to log in as the first step of posting your ad.\nYour ad will go live once it has been reviewed.</item>
+
+        <item>To delete an ad, please go to your ad page and click on the "Delete ad" option.\nTip: you can find your ad easily by logging in to your account and visiting your "My ads" page!</item>
+
+        <item>To edit an ad, please go to your ad page and click on the "Edit ad" option.\nTip: you can find your ad easily by logging in to your account and visiting your "My ads" page!
+</item>
+
+        <item>To set a new Kena-kata.com password, please log in to your account, go to the "Settings" page and enter a new password.\nIf you have forgotten your Kena-kata.com password, you can:\n\tgo to the log-in page and click on the "Forgot your password?" link
+\n\tgo to one of your ads, click on "Edit ad" or "Delete ad", and click on the "Forgot your password?" link.\nIf you have created an account via Facebook, you will not have a Kena-kata.com password. You can log in to your account via Facebook without a password.</item>
+
+        <item>Signing up for an account on Kena-kata.com is quick, easy and completely free! To sign up on Kena-kata.com, please go to the Sign up page and follow the instructions. You can sign up with an email address or through your Facebook account.\nOnce you have signed up, a link will be sent to your email with instructions on how to verify your email address.</item>
+
+        <item>To log in to your account, simply go to the Log in page and enter your email and Kena-kata.com password. If you have created an account via Facebook, click on "Continue with Facebook" and follow the instructions.\nTo log out of your account, simply click the "Log out" option.</item>
+
+        <item>To change the details on your account, log in to your account and go to your account's "Settings" page.</item>
+
+        <item>If you are having trouble logging in to your account, please check that you have: Signed up for an account.\nEntered the correct email address and password on the log in page.\nIf you are still having trouble accessing your account, please contact us.</item>
+    </string-array>
+
+    <string-array name="units">
+        <item>katha</item>
+        <item>bigha</item>
+        <item>acres</item>
+        <item>shotok</item>
+        <item>decimel</item>
+    </string-array>
+
+    <string-array name="land_type">
+        <item>Agricultural</item>
+        <item>Commercial</item>
+        <item>Residential</item>
+        <item>Other</item>
+    </string-array>
+</resources>
