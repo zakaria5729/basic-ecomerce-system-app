@@ -1,7 +1,7 @@
 package com.example.zakaria.myproducts;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,11 +11,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zakaria.myproducts.models.MobileProduct;
 import com.example.zakaria.myproducts.models.Others;
-import com.example.zakaria.myproducts.models.Product;
 import com.example.zakaria.myproducts.models.UpdateProfile;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,18 +26,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import ru.dimorinny.floatingtextbutton.FloatingTextButton;
 
 public class ProductListActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference mDatabaseRef;
 
-    RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
-    ArrayList<Product> productList;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private List<MobileProduct> productList;
+    private AllProductAdapter allProductAdapter;
 
     private Button signUpButton, phoneVerifyButton;
-    private TextView login, close;
+    private TextView login, close, noDataFoundTV;
     private boolean isAddProductButton;
     private String userName = "";
 
@@ -45,10 +50,50 @@ public class ProductListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
 
-        FloatingTextButton addProductBtn = findViewById(R.id.call_button);
+        FloatingTextButton addProductBtn = findViewById(R.id.postAddBtn);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        addProductToList();
+
+        recyclerView = findViewById(R.id.recylerAllV);
+        noDataFoundTV = findViewById(R.id.noDataFoundTV);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(ProductListActivity.this, 2));
+        productList = new ArrayList<>();
+
+        if (firebaseAuth.getCurrentUser() != null) {
+            noDataFoundTV.setVisibility(View.GONE);
+
+            mDatabaseRef = FirebaseDatabase.getInstance().getReference("product_list").child(firebaseAuth.getCurrentUser().getUid());
+
+            mDatabaseRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.hasChildren()) {
+                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                            MobileProduct mobileProduct = postSnapshot.getValue(MobileProduct.class);
+                            productList.add(mobileProduct);
+                        }
+
+                        allProductAdapter = new AllProductAdapter(ProductListActivity.this, productList);
+                        recyclerView.setAdapter(allProductAdapter);
+
+                    }
+                    else {
+                        Toast.makeText(ProductListActivity.this, "No data found", Toast.LENGTH_LONG).show();
+                        noDataFoundTV.setVisibility(View.VISIBLE);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(ProductListActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+        else {
+            noDataFoundTV.setVisibility(View.VISIBLE);
+        }
 
         addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,27 +107,6 @@ public class ProductListActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void addProductToList() {
-        productList = new ArrayList<>();
-
-        productList.add(new Product("Ifty's product", "car", "\u09F3 " + "6000"));
-        productList.add(new Product("Md Zakaria Hossain's product", "car", "\u09F3 " + "6000"));
-        productList.add(new Product("Ifty's product", "car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car car", "\u09F3 " + "6000"));
-        productList.add(new Product("Munna's product", "car", "\u09F3 " + "6000"));
-        productList.add(new Product("Zakaria's product", "car car car car car car car car", "\u09F3 " + "600064545454"));
-        productList.add(new Product("Zakaria's product", "car", "\u09F3 " + "6000"));
-        productList.add(new Product("Zakaria's product", "car car car car car car car car", "\u09F3 " + "6000"));
-        productList.add(new Product("Zakaria's product", "car", "\u09F3 " + "6000"));
-        productList.add(new Product("Zakaria's product", "car car car car car car car car", "\u09F3 " + "6000"));
-        productList.add(new Product("Zakaria's product", "car", "\u09F3 " + "6000"));
-
-        recyclerView = findViewById(R.id.recylerAllV);
-        layoutManager = new GridLayoutManager(this, 2);
-        recyclerView.setLayoutManager(layoutManager);
-        AllProductAdapter allProductAdapter = new AllProductAdapter(this, productList);
-        recyclerView.setAdapter(allProductAdapter);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -104,20 +128,16 @@ public class ProductListActivity extends AppCompatActivity {
                 }
             });
         } else {
-           /* if (setUpdatedValueOnTheField() != null || setUpdatedValueOnTheField() != "") {
-                userName = setUpdatedValueOnTheField();
-            }
-            else {*/
-                String userEmail = firebaseAuth.getCurrentUser().getEmail();
-                for (int i = 0; i < userEmail.length(); i++) {
-                    if (userEmail.charAt(i) != '@') {
-                        userName += userEmail.charAt(i);
-                    }
-                    else if (userEmail.charAt(i) == '@') {
-                        break;
-                    }
+            String userEmail = firebaseAuth.getCurrentUser().getEmail();
+            for (int i = 0; i < userEmail.length(); i++) {
+                if (userEmail.charAt(i) != '@') {
+                    userName += userEmail.charAt(i);
                 }
-            //}
+                else if (userEmail.charAt(i) == '@') {
+                    break;
+                }
+            }
+
             menu.findItem(R.id.logout).setVisible(true);
             menu.findItem(R.id.myAccount).setVisible(true);
             menu.findItem(R.id.accountIconWithEmailOrPhone).setVisible(true);
@@ -207,25 +227,5 @@ public class ProductListActivity extends AppCompatActivity {
             }
         });
         alertDialog.show();
-    }
-
-    public String setUpdatedValueOnTheField() {
-        final String[] currentUserName = {""};
-
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("user_profile");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    UpdateProfile updateProfile = dataSnapshot1.getValue(UpdateProfile.class);
-                    currentUserName[0] = updateProfile.getUserName();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-        return currentUserName[0];
     }
 }

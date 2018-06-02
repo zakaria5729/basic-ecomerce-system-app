@@ -2,44 +2,54 @@ package com.example.zakaria.myproducts.models;
 
 public class MobileProduct {
 
-    private String name;
+    private String userName;
+    private String productName;
     private String location;
     private String condition;
     private String brand;
     private String model;
-    private String features;
-    private String edition;
     private String category;
     private String description;
     private String posted;
     private String phoneNumber;
     private String price;
+    private String imageUrl;
+    private String uploadId;
 
     public MobileProduct() {
 
     }
 
-    public MobileProduct(String name, String location, String condition, String brand, String model, String features, String edition, String category, String description, String posted, String phoneNumber, String price) {
-        this.name = name;
+    public MobileProduct(String userName, String productName, String location, String condition, String brand, String model, String category, String description, String posted, String phoneNumber, String price, String imageUrl, String uploadId) {
+        this.userName = userName;
+        this.productName = productName;
         this.location = location;
         this.condition = condition;
         this.brand = brand;
         this.model = model;
-        this.features = features;
-        this.edition = edition;
         this.category = category;
         this.description = description;
         this.posted = posted;
         this.phoneNumber = phoneNumber;
         this.price = price;
+        this.imageUrl = imageUrl;
+        this.uploadId = uploadId;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public String getLocation() {
@@ -72,22 +82,6 @@ public class MobileProduct {
 
     public void setModel(String model) {
         this.model = model;
-    }
-
-    public String getFeatures() {
-        return features;
-    }
-
-    public void setFeatures(String features) {
-        this.features = features;
-    }
-
-    public String getEdition() {
-        return edition;
-    }
-
-    public void setEdition(String edition) {
-        this.edition = edition;
     }
 
     public String getCategory() {
@@ -128,5 +122,21 @@ public class MobileProduct {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getUploadId() {
+        return uploadId;
+    }
+
+    public void setUploadId(String uploadId) {
+        this.uploadId = uploadId;
     }
 }

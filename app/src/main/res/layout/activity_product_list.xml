@@ -15,8 +15,16 @@
         android:layout_marginLeft="3dp"
         android:layout_marginRight="5dp" />
 
+    <TextView
+        android:id="@+id/noDataFoundTV"
+        android:visibility="gone"
+        android:text="         No data found!\n\n         Add Product or\nCheck internet connection"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <ru.dimorinny.floatingtextbutton.FloatingTextButton
-        android:id="@+id/call_button"
+        android:id="@+id/postAddBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"

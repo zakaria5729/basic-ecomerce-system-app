@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -12,7 +10,6 @@
         android:layout_height="0dp">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,37 +17,28 @@
             android:orientation="vertical"
             tools:context=".ProductDetailsActivity">
 
-            <TextView
-                android:id="@+id/companyNameDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Company Name"
-                android:textColor="#061626"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_marginStart="5dp" />
-
             <ImageView
                 android:id="@+id/productImageDetails"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:src="@mipmap/ic_launcher"
-                android:scaleType="fitXY" />
+                android:scaleType="fitCenter" />
 
             <TextView
                 android:id="@+id/priceDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/price"
                 android:gravity="center|left"
-                android:paddingLeft="20dp"
-                android:paddingRight="70dip"
+                android:paddingLeft="10dp"
+                android:paddingRight="30dip"
                 android:text="Tk 6,000,000"
-                android:textColor="#000"
-                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:paddingStart="20dp"
                 android:paddingEnd="70dip" />
@@ -66,11 +54,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="For sale by "
+                    android:text="For sale by: "
                     android:textColor="#242c35"
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/companyNameDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Full Name"
@@ -91,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:layout_marginStart="5dp">
 
@@ -129,6 +118,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/modelTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="rog 5"
@@ -153,6 +143,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/brandTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ASUS"
@@ -177,33 +168,10 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/categoryTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Laptop"
-                    android:textColor="#374758"
-                    android:textSize="17sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:layout_marginStart="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Location: "
-                    android:textColor="#000"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="location"
                     android:textColor="#374758"
                     android:textSize="17sp" />
             </LinearLayout>
@@ -225,6 +193,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/conditionsTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New"
@@ -243,15 +212,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Posted: "
+                    android:text="Location: "
                     android:textColor="#000"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/locationTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="an hour ago"
+                    android:text="location"
                     android:textColor="#374758"
                     android:textSize="17sp" />
             </LinearLayout>
@@ -261,7 +231,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:layout_marginStart="5dp">
 
@@ -274,6 +244,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/postedTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="an hour ago"
@@ -281,10 +252,10 @@
                     android:textSize="17sp" />
             </LinearLayout>
         </LinearLayout>
-
     </ScrollView>
 
     <Button
+        android:id="@+id/callNowBtn"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:layout_gravity="bottom|center_horizontal"

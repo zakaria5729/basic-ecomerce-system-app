@@ -33,6 +33,8 @@
 
         <EditText
             android:id="@+id/emailSignUpET"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
+            android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email Address"/>
@@ -46,6 +48,8 @@
 
         <EditText
             android:id="@+id/passwordSignUpET"
+            android:drawableLeft="@drawable/ic_password_24dp"
+            android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"

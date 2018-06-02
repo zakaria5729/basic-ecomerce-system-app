@@ -2,6 +2,7 @@ package com.example.zakaria.myproducts;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +11,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +30,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -47,15 +45,18 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private ImageView profileImageView;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseAuth firebaseAuth;
-    private ListView listView;
     //private MenuItem editItem;
+    private static String userName;
+    private static String phoneNumber;
+    private static String location;
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
 
-        /*profileImageView = findViewById(R.id.profileImageView);
+        profileImageView = findViewById(R.id.profileImageView);
         nameUpdateET = findViewById(R.id.nameUpdateET);
         phoneUpdateET = findViewById(R.id.phoneUpdateET);
         locationUpdateET = findViewById(R.id.locationUpdateET);
@@ -64,8 +65,9 @@ public class UpdateProfileActivity extends AppCompatActivity {
         updateTV = findViewById(R.id.myProfileTV);
         nameTextInputLayout = findViewById(R.id.nameTextInputLayout);
         phoneNumberTextInputLayout = findViewById(R.id.phoneNumberTextInputLayout);
-        locationTextInputLayout = findViewById(R.id.locationTextInputLayout);*/
-        listView = findViewById(R.id.listId);
+        locationTextInputLayout = findViewById(R.id.locationTextInputLayout);
+
+        //tv = findViewById(R.id.tv);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -83,7 +85,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.updateProIconId) {
-            /*nameUpdateET.setEnabled(true);
+            nameUpdateET.setEnabled(true);
             phoneUpdateET.setEnabled(true);
             locationUpdateET.setEnabled(true);
             updateTV.setText("Update My Profile");
@@ -92,7 +94,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
             nameTextInputLayout.setHintEnabled(true);
             phoneNumberTextInputLayout.setHintEnabled(true);
-            locationTextInputLayout.setHintEnabled(true);*/
+            locationTextInputLayout.setHintEnabled(true);
             //editItem.setVisible(false);
         }
         return super.onOptionsItemSelected(item);
@@ -130,7 +132,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Uri> task) {
                 if (task.isSuccessful()) {
                     downloadUrl = task.getResult();
-                    getProfileImage();
                 }
                 else {
                     Toast.makeText(UpdateProfileActivity.this, "Profile image is not updated", Toast.LENGTH_SHORT).show();
@@ -139,14 +140,14 @@ public class UpdateProfileActivity extends AppCompatActivity {
         });
     }
 
-    public void getProfileImage() {
-        Picasso.get().load(downloadUrl).into(profileImageView);
-    }
-
-    /*public void updateProfileBtn(View view) {
+    public void updateProfileBtn(View view) {
         try {
             DatabaseReference databaseReference = firebaseDatabase.getReference("user_profile");
             UpdateProfile updateProfile = new UpdateProfile(nameUpdateET.getText().toString(), phoneUpdateET.getText().toString(), locationUpdateET.getText().toString());
+
+            userName = nameUpdateET.getText().toString();
+            phoneNumber = phoneUpdateET.getText().toString();
+            location = locationUpdateET.getText().toString();
 
             databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(updateProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -162,7 +163,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         } catch (Exception ex) {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
         }
-    }*/
+    }
 
     public void getCurrentUserInfo() {
             final DatabaseReference databaseReference = firebaseDatabase.getReference("user_profile").child(firebaseAuth.getCurrentUser().getUid());
@@ -170,27 +171,16 @@ public class UpdateProfileActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.hasChildren()) {
-                            /*UpdateProfile updateProfile = dataSnapshot.getValue(UpdateProfile.class);
+                            UpdateProfile updateProfile = dataSnapshot.getValue(UpdateProfile.class);
                             ArrayList<String> updatedDataList = new ArrayList<>();
+
                             updatedDataList.add(updateProfile.getUserName());
                             updatedDataList.add(updateProfile.getPhoneNumber());
                             updatedDataList.add(updateProfile.getLocation());
 
                             nameUpdateET.setText(updatedDataList.get(0));
                             phoneUpdateET.setText(updatedDataList.get(1));
-                            locationUpdateET.setText(updatedDataList.get(2));*/
-
-                            UpdateProfile updateProfile = null;
-                            for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
-                                updateProfile = dataSnapshot.getValue(UpdateProfile.class);
-                                ArrayList<String> dataList = new ArrayList<>();
-                                dataList.add(updateProfile.getUserName());
-                                dataList.add(updateProfile.getPhoneNumber());
-                                dataList.add(updateProfile.getLocation());
-
-                                ArrayAdapter<String> list = new ArrayAdapter<>(UpdateProfileActivity.this, android.R.layout.simple_list_item_1, dataList);
-                                listView.setAdapter(list);
-                            }
+                            locationUpdateET.setText(updatedDataList.get(2));
                         }
                         else {
                             Toast.makeText(UpdateProfileActivity.this, "No data found!", Toast.LENGTH_SHORT).show();
@@ -202,13 +192,16 @@ public class UpdateProfileActivity extends AppCompatActivity {
                         Toast.makeText(UpdateProfileActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
-
             //editItem.setVisible(true);
-            /*nameUpdateET.setEnabled(false);
+            nameUpdateET.setEnabled(false);
             phoneUpdateET.setEnabled(false);
             locationUpdateET.setEnabled(false);
             updateTV.setText("My Profile");
             changeImgBtn.setVisibility(View.GONE);
-            updateBtn.setVisibility(View.GONE);*/
+            updateBtn.setVisibility(View.GONE);
+    }
+
+    public static String getUserName() {
+        return userName;
     }
 }
